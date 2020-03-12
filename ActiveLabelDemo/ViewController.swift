@@ -10,13 +10,32 @@ import UIKit
 import ActiveLabel
 
 class ViewController: UIViewController {
+    
+    var protocolLabel:ActiveLabel? = nil
     /// 展示 label
     let myLabel = ActiveLabel(frame: CGRect(origin: CGPoint(x: 50, y: 100), size: CGSize(width: 300, height: 0)))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabel()
-        view.addSubview(myLabel)
+//        setLabel()
+//        view.addSubview(myLabel)
+        
+        if  protocolLabel == nil {
+            protocolLabel = ActiveLabel()
+            let customType = ActiveType.custom(pattern: "1")
+            protocolLabel?.enabledTypes = [customType]
+            protocolLabel?.numberOfLines = 0
+            protocolLabel?.text = "点击注qwe在VB册按钮，即0123表示您12同意abc"
+            protocolLabel?.font = UIFont.systemFont(ofSize: 10)
+            protocolLabel?.customColor[customType] = UIColor.red
+            protocolLabel?.textColor = UIColor.green
+            //            protocolLabel?.handleCustomTap(for: customType, handler: { (customType) in
+            //                print("1111111")
+            //            })
+            self.view.addSubview(protocolLabel!)
+            protocolLabel?.frame = CGRect.init(x: 20, y: 100, width: 300, height: 40)
+            
+        }
     }
     
     func setLabel() {

@@ -117,7 +117,7 @@ struct ActiveBuilder {
         let nsstring = text as NSString
         var elements: [ElementTuple] = []
         
-        for match in matches where match.range.length > minLength {
+        for match in matches where match.range.length > 0 {
             let word = nsstring.substring(with: match.range)
                 .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             if filterPredicate?(word) ?? true {
